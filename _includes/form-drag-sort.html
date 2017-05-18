@@ -2,6 +2,7 @@
   	// Simple list
   	var el = document.getElementById('simpleList');
 	var sortable = Sortable.create(el,{
+        handle: ".my-handle",
 		filter: ".ignore-elements",
 		ghostClass: "sortable-ghost",  // Class name for the drop placeholder
 	    chosenClass: "sortable-chosen",  // Class name for the chosen item
