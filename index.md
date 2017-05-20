@@ -13,4 +13,4 @@ We are currently planning trips to these destinations. If you have any recommend
 * Guilin, Yangshuo, Los Angeles, Denver, Portland, Ho Chi Minh, Hanoi, Halong Bay, Sapa, Edinburgh 
 
 ## Recently
-* [Zhangjiajie]({{ site.baseurl }}{% post_url 2017-05-01-Zhangjiajie %})
+<!-- * [Zhangjiajie]({{ site.baseurl }}{% post_url 2017-05-01-Zhangjiajie %}) -->
