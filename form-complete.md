@@ -2,7 +2,7 @@
 layout: single
 author_profile: false
 author: mark
-title: "Thank you - Your bracket has been recorded."
+title: "Awesome! Your picks have been recorded."
 permalink: /form-complete/
 ---
 
