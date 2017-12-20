@@ -6,3 +6,16 @@
 	margin-top: 1.0em;
 	margin-bottom: 2.0em;
 }
+.clear { clear: both; }
+.iphone-size-img { 
+	max-width:500px;
+	margin-bottom: 2.0em;
+}
+.img{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px; 
+	-webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+}
