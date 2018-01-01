@@ -19,3 +19,12 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
     filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
 }
+
+@media only screen and (max-width: 640px) {
+    .iphone-size-img { 
+		margin-top: 1.0em;
+		margin-bottom: 2.0em;
+		width:100%;
+	}
+
+}
