@@ -4,7 +4,7 @@ author_profile: false
 title: "Shark 2017"
 permalink: /2017/
 ---
-# Our 2017 from China in Pictures
+# 2017 from China in Pictures
 Because we (Mark) could not just send a simple card...
 
 # Adventures with Friends

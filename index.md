@@ -10,7 +10,8 @@ Living in Shanghai has allowed us to explore amazing places. If you have any rec
 ## Coming up
 We are currently planning trips to these destinations. If you have any recommendations we would absolutely love to hear them.
 
-* Guilin, Yangshuo, Los Angeles, Denver, Portland, Ho Chi Minh, Hanoi, Halong Bay, Sapa, Edinburgh 
+* Harbin, Bangkok, Yangon, Bagan, Inle Lake, Luang Prabang, Vientiane, Taipei
 
 ## Recently
 <!-- * [Zhangjiajie]({{ site.baseurl }}{% post_url 2017-05-01-Zhangjiajie %}) -->
+* Guilin, Yangshuo, Los Angeles, Denver, Portland, Ho Chi Minh, Hanoi, Halong Bay, Sapa, Edinburgh
