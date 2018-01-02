@@ -6,8 +6,8 @@ title: "The Bachelor(ette) Bracket"
 permalink: /bachelor-bracket/
 ---
 
-## Upcoming BachBracket Season: Rachel Lindsay
-The 17th season of our Bach Bracket starts Monday May 22, 2017. Submit your picks (by clicking on the link below) to join in on the fun!
+## Upcoming BachBracket Season: Arie Luyendyk Jr.
+The 18th season of our Bach Bracket starts Monday Jan 1, 2018. Submit your picks (by clicking on the link below) to join in on the fun!
 <br>
 <a class="btn-primary" href="{{ site.baseurl }}{% link bachelor-submit.html %}">FILL OUT YOUR BRACKET HERE</a>
 ## Rules / Legal Fine Print
@@ -34,4 +34,5 @@ The 17th season of our Bach Bracket starts Monday May 22, 2017. Submit your pick
 * Season 14 (Ben H.) - Jill F.
 * Season 15 (JoJo) - Julie
 * Season 16 (Nick) - Melissa
-* Season 17 (Rachel) - TBD
+* Season 17 (Rachel) - Shiran
+* Season 18 (Arie) - TBD
