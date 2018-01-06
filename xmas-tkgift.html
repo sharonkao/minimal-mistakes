@@ -46,6 +46,15 @@ permalink: /xmastkd
         return canvas;
     }
 
+    // Get the position of a touch relative to the canvas
+    function getTouchPos(canvasDom, touchEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      };
+    }
+
     function init(container, width, height, fillColor) {
         var canvas = createCanvas(container, width, height);
         var ctx = canvas.context;
@@ -108,6 +117,7 @@ permalink: /xmastkd
             canvas.dispatchEvent(mouseEvent);
         };
         canvas.node.touchend = function(e) {
+            e.preventDefault();
             var mouseEvent = new MouseEvent("mouseup", {});
             canvas.dispatchEvent(mouseEvent);
         };
@@ -119,36 +129,36 @@ permalink: /xmastkd
 
 })();
 
-$(document).ready(function () {
-    var isTouchDevice = 'ontouchstart' in document.documentElement;
-    $('#wrapping-paper').on('touchmove', function(){
-        if (isTouchDevice)  {   
-            e.preventDefault();
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent("mousemove", {
-              clientX: touch.clientX,
-              clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);  
-        }
-    });
-    $('#wrapping-paper').on('touchstart', function(){
-        if (isTouchDevice)  {   
-            e.preventDefault();
-            mousePos = getTouchPos(canvas, e);
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent("mousedown", {
-              clientX: touch.clientX,
-              clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);  
-        }
-    });
-    $('#wrapping-paper').on('touchend', function(){
-        if (isTouchDevice)  {   
-            var mouseEvent = new MouseEvent("mouseup", {});
-            canvas.dispatchEvent(mouseEvent);
-        }
-    });
-});
+// $(document).ready(function () {
+//     var isTouchDevice = 'ontouchstart' in document.documentElement;
+//     $('#wrapping-paper').on('touchmove', function(){
+//         // if (isTouchDevice)  {   
+//             e.preventDefault();
+//             var touch = e.touches[0];
+//             var mouseEvent = new MouseEvent("mousemove", {
+//               clientX: touch.clientX,
+//               clientY: touch.clientY
+//             });
+//             canvas.dispatchEvent(mouseEvent);  
+//         // }
+//     });
+//     $('#wrapping-paper').on('touchstart', function(){
+//         // if (isTouchDevice)  {   
+//             e.preventDefault();
+//             mousePos = getTouchPos(canvas, e);
+//             var touch = e.touches[0];
+//             var mouseEvent = new MouseEvent("mousedown", {
+//               clientX: touch.clientX,
+//               clientY: touch.clientY
+//             });
+//             canvas.dispatchEvent(mouseEvent);  
+//         // }
+//     });
+//     $('#wrapping-paper').on('touchend', function(){
+//         // if (isTouchDevice)  {   
+//             var mouseEvent = new MouseEvent("mouseup", {});
+//             canvas.dispatchEvent(mouseEvent);
+//         // }
+//     });
+// });
 </script>
