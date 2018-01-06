@@ -77,12 +77,32 @@ permalink: /xmastkd
             ctx.globalCompositeOperation = 'destination-out';
             ctx.fillCircle(x, y, radius, fillColor);
         };
+
         canvas.node.onmousedown = function(e) {
             canvas.isDrawing = true;
         };
         canvas.node.onmouseup = function(e) {
             canvas.isDrawing = false;
         };
+        // bind touch events
+        canvas.node.touchmove = function(e) {
+            if (!canvas.isDrawing) {
+               return;
+            }
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            var radius = 30; // or whatever
+            var fillColor = '#ff0000';
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fillCircle(x, y, radius, fillColor);
+        };
+        canvas.node.touchstart = function(e) {
+            canvas.isDrawing = true;
+        };
+        canvas.node.touchend = function(e) {
+            canvas.isDrawing = false;
+        };
+
     }
 
     var container = document.getElementById('canvas');
