@@ -15,9 +15,6 @@ permalink: /xmastkd
 <style type="text/css">
     #canvas {
       background:url(assets/images/xmastkd-open.png);
-         
-      width: 533px;
-      height: 800px;
       -webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
       -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
       filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
@@ -125,9 +122,25 @@ function init(container, width, height, fillColor) {
 }
 
 var container = document.getElementById('canvas');
-init(container, 533, 800, '#ddd');
+var windowWidth = document.documentElement.clientWidth
+var desiredWidth = 533
+var desiredHeight = 800
+var padding = 40
+
+if(windowWidth - 2 * padding < 533){
+  desiredWidth = windowWidth - 2 * padding
+  desiredHeight = (windowWidth - 2 * padding) / 533 * 800
+}
+
+container.style.height = desiredHeight+"px";
+container.style.width = desiredWidth+"px";
+init(container, desiredWidth, desiredHeight , '#ddd');
 
 var canvas = document.getElementById('wrapping-paper')
+
+
+
+
 
 
 // Set up touch events for mobile, etc
