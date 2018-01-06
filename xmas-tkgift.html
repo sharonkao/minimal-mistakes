@@ -23,6 +23,15 @@ permalink: /xmastkd
       -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
       filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
   }
+  @media only screen and (max-width : 780px){
+    .masthead__inner-wrap{
+      display: none;
+    }
+    .page__footer{
+      display: none;
+    }
+  }
+  
 
 </style>
 <div id="canvas"></div>
@@ -132,8 +141,6 @@ var desiredHeight = 800
 var padding = 40
 
 if(windowWidth - 2 * padding < 533){
-  var header = document.getElementById('site-nav')
-  header.style.display = "none"
   desiredWidth = windowWidth - 2 * padding
   desiredHeight = (windowWidth - 2 * padding) / 533 * 800
 }
