@@ -29,105 +29,132 @@ permalink: /xmastkd
 
 <script type="text/javascript">
 
-(function() {
-    // Creates a new canvas element and appends it as a child
-    // to the parent element, and returns the reference to
-    // the newly created canvas element
+
+// Creates a new canvas element and appends it as a child
+// to the parent element, and returns the reference to
+// the newly created canvas element
 
 
-    function createCanvas(parent, width, height) {
-        var canvas = {};
-        canvas.node = document.createElement('canvas');
-        canvas.node.id = "wrapping-paper";
-        canvas.context = canvas.node.getContext('2d');
-        canvas.node.width = width || 100;
-        canvas.node.height = height || 100;
-        parent.appendChild(canvas.node);
-        return canvas;
-    }
+function createCanvas(parent, width, height) {
+    var canvas = {};
+    canvas.node = document.createElement('canvas');
+    canvas.node.id = "wrapping-paper";
+    canvas.context = canvas.node.getContext('2d');
+    canvas.node.width = width || 100;
+    canvas.node.height = height || 100;
+    parent.appendChild(canvas.node);
+    return canvas;
+}
 
-    // Get the position of a touch relative to the canvas
-    function getTouchPos(canvasDom, touchEvent) {
-      var rect = canvasDom.getBoundingClientRect();
-      return {
-        x: touchEvent.touches[0].clientX - rect.left,
-        y: touchEvent.touches[0].clientY - rect.top
-      };
-    }
+// Get the position of a touch relative to the canvas
+function getTouchPos(canvasDom, touchEvent) {
+  var rect = canvasDom.getBoundingClientRect();
+  return {
+    x: touchEvent.touches[0].clientX - rect.left,
+    y: touchEvent.touches[0].clientY - rect.top
+  };
+}
 
-    function init(container, width, height, fillColor) {
-        var canvas = createCanvas(container, width, height);
-        var ctx = canvas.context;
-        // define a custom fillCircle method
-        ctx.fillCircle = function(x, y, radius, fillColor) {
-            this.fillStyle = fillColor;
-            this.beginPath();
-            this.moveTo(x, y);
-            this.arc(x, y, radius, 0, Math.PI * 2, false);
-            this.fill();
+function init(container, width, height, fillColor) {
+    var canvas = createCanvas(container, width, height);
+    var ctx = canvas.context;
+    // define a custom fillCircle method
+    ctx.fillCircle = function(x, y, radius, fillColor) {
+        this.fillStyle = fillColor;
+        this.beginPath();
+        this.moveTo(x, y);
+        this.arc(x, y, radius, 0, Math.PI * 2, false);
+        this.fill();
+    };
+    ctx.clearTo = function(fillColor) {
+        var img = new Image();
+        img.src = "assets/images/giftwrap.png";
+        img.onload = function () {
+            var pattern = ctx.createPattern(img, "repeat");
+            ctx.fillStyle = pattern;
+            ctx.fillRect(0, 0, width, height);
         };
-        ctx.clearTo = function(fillColor) {
-            var img = new Image();
-            img.src = "assets/images/giftwrap.png";
-            img.onload = function () {
-                var pattern = ctx.createPattern(img, "repeat");
-                ctx.fillStyle = pattern;
-                ctx.fillRect(0, 0, width, height);
-            };
-        };
-        ctx.clearTo(fillColor || "#ddd");
+    };
+    ctx.clearTo(fillColor || "#ddd");
 
-        // bind mouse events
-        canvas.node.onmousemove = function(e) {
-            if (!canvas.isDrawing) {
-               return;
-            }
-            var x = e.pageX - this.offsetLeft;
-            var y = e.pageY - this.offsetTop;
-            var radius = 30; // or whatever
-            var fillColor = '#ff0000';
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.fillCircle(x, y, radius, fillColor);
-        };
+    // bind mouse events
+    canvas.node.onmousemove = function(e) {
+        if (!canvas.isDrawing) {
+           return;
+        }
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        var radius = 30; // or whatever
+        var fillColor = '#ff0000';
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillCircle(x, y, radius, fillColor);
+    };
 
-        canvas.node.onmousedown = function(e) {
-            canvas.isDrawing = true;
-        };
-        canvas.node.onmouseup = function(e) {
-            canvas.isDrawing = false;
-        };
-        // bind touch events to the mouse events
-        canvas.node.touchmove = function(e) {
-            e.preventDefault();
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent("mousemove", {
-              clientX: touch.clientX,
-              clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);
-        };
-        canvas.node.touchstart = function(e) {
-            e.preventDefault();
-            mousePos = getTouchPos(canvas, e);
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent("mousedown", {
-              clientX: touch.clientX,
-              clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);
-        };
-        canvas.node.touchend = function(e) {
-            e.preventDefault();
-            var mouseEvent = new MouseEvent("mouseup", {});
-            canvas.dispatchEvent(mouseEvent);
-        };
+    canvas.node.onmousedown = function(e) {
+        canvas.isDrawing = true;
+    };
+    canvas.node.onmouseup = function(e) {
+        canvas.isDrawing = false;
+    };
+    // bind touch events to the mouse events
+    // canvas.node.touchmove = function(e) {
+    //     e.preventDefault();
+    //     var touch = e.touches[0];
+    //     var mouseEvent = new MouseEvent("mousemove", {
+    //       clientX: touch.clientX,
+    //       clientY: touch.clientY
+    //     });
+    //     canvas.dispatchEvent(mouseEvent);
+    // };
+    // canvas.node.touchstart = function(e) {
+    //     e.preventDefault();
+    //     mousePos = getTouchPos(canvas, e);
+    //     var touch = e.touches[0];
+    //     var mouseEvent = new MouseEvent("mousedown", {
+    //       clientX: touch.clientX,
+    //       clientY: touch.clientY
+    //     });
+    //     canvas.dispatchEvent(mouseEvent);
+    // };
+    // canvas.node.touchend = function(e) {
+    //     e.preventDefault();
+    //     var mouseEvent = new MouseEvent("mouseup", {});
+    //     canvas.dispatchEvent(mouseEvent);
+    // };
 
-    }
+}
 
-    var container = document.getElementById('canvas');
-    init(container, 533, 800, '#ddd');
+var container = document.getElementById('canvas');
+init(container, 533, 800, '#ddd');
 
-})();
+var canvas = document.getElementById('wrapping-paper')
+
+
+// Set up touch events for mobile, etc
+canvas.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  mousePos = getTouchPos(canvas, e);
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousedown", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+canvas.addEventListener("touchend", function (e) {
+  e.preventDefault();
+  var mouseEvent = new MouseEvent("mouseup", {});
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+canvas.addEventListener("touchmove", function (e) {
+  e.preventDefault();
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousemove", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
 
 // $(document).ready(function () {
 //     var isTouchDevice = 'ontouchstart' in document.documentElement;
