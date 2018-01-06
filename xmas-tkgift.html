@@ -86,6 +86,7 @@ permalink: /xmastkd
         };
         // bind touch events to the mouse events
         canvas.node.touchmove = function(e) {
+            e.preventDefault();
             var touch = e.touches[0];
             var mouseEvent = new MouseEvent("mousemove", {
               clientX: touch.clientX,
@@ -94,6 +95,7 @@ permalink: /xmastkd
             canvas.dispatchEvent(mouseEvent);
         };
         canvas.node.touchstart = function(e) {
+            e.preventDefault();
             mousePos = getTouchPos(canvas, e);
             var touch = e.touches[0];
             var mouseEvent = new MouseEvent("mousedown", {
