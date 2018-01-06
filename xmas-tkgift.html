@@ -36,6 +36,7 @@ permalink: /xmastkd
     function createCanvas(parent, width, height) {
         var canvas = {};
         canvas.node = document.createElement('canvas');
+        canvas.node.id = "wrapping-paper";
         canvas.context = canvas.node.getContext('2d');
         canvas.node.width = width || 100;
         canvas.node.height = height || 100;
@@ -95,6 +96,7 @@ permalink: /xmastkd
             canvas.dispatchEvent(mouseEvent);
         };
         canvas.node.touchstart = function(e) {
+            alert('started touch')
             e.preventDefault();
             mousePos = getTouchPos(canvas, e);
             var touch = e.touches[0];
