@@ -25,8 +25,10 @@ permalink: /xmastkd
 
 </style>
 <div id="canvas"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+
 (function() {
     // Creates a new canvas element and appends it as a child
     // to the parent element, and returns the reference to
@@ -96,7 +98,6 @@ permalink: /xmastkd
             canvas.dispatchEvent(mouseEvent);
         };
         canvas.node.touchstart = function(e) {
-            alert('started touch')
             e.preventDefault();
             mousePos = getTouchPos(canvas, e);
             var touch = e.touches[0];
@@ -117,4 +118,37 @@ permalink: /xmastkd
     init(container, 533, 800, '#ddd');
 
 })();
+
+$(document).ready(function () {
+    var isTouchDevice = 'ontouchstart' in document.documentElement;
+    $('#wrapping-paper').on('touchmove', function(){
+        if (isTouchDevice)  {   
+            e.preventDefault();
+            var touch = e.touches[0];
+            var mouseEvent = new MouseEvent("mousemove", {
+              clientX: touch.clientX,
+              clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);  
+        }
+    });
+    $('#wrapping-paper').on('touchstart', function(){
+        if (isTouchDevice)  {   
+            e.preventDefault();
+            mousePos = getTouchPos(canvas, e);
+            var touch = e.touches[0];
+            var mouseEvent = new MouseEvent("mousedown", {
+              clientX: touch.clientX,
+              clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);  
+        }
+    });
+    $('#wrapping-paper').on('touchend', function(){
+        if (isTouchDevice)  {   
+            var mouseEvent = new MouseEvent("mouseup", {});
+            canvas.dispatchEvent(mouseEvent);
+        }
+    });
+});
 </script>
