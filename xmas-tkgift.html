@@ -132,6 +132,8 @@ var desiredHeight = 800
 var padding = 40
 
 if(windowWidth - 2 * padding < 533){
+  var header = document.getElementById('site-nav')
+  header.style.display = "none"
   desiredWidth = windowWidth - 2 * padding
   desiredHeight = (windowWidth - 2 * padding) / 533 * 800
 }
