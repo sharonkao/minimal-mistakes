@@ -6,15 +6,15 @@ title: "The Bachelor(ette) Bracket"
 permalink: /bachelor-bracket/
 ---
 
-## Upcoming BachBracket Season: Arie Luyendyk Jr.
-The 18th season of our Bach Bracket starts Monday Jan 1, 2018. Submit your picks (by clicking on the link below) to join in on the fun!
+## Upcoming BachBracket Season: Becca Kufrin
+The 19th season of our Bach Bracket starts Monday May 28, 2018. Submit your picks (by clicking on the link below) to join in on the fun!
 <br>
 <a class="btn-primary" href="{{ site.baseurl }}{% link bachelor-submit.html %}">FILL OUT YOUR BRACKET HERE</a>
 ## Rules / Legal Fine Print
 1. Order the contestants based on *HOW LONG THEY WILL STAY* in the show (Top = wins the FINAL rose, Bottom = out in Episode 2).
 2. Submissions are due before Episode 2 airs.
 3. No researching/cheating with spoilers until after you submit your picks. Your only "tools" can be your sheer matchmaking prowess, Episode 1 of the show, and/or the contest bios on [the ABC website](http://abc.com).  We're putting our trust in all y'all, so scout's honor everyone. 
-4. Along with submitting your picks, you also need to submit a $10 (USD) entry fee.  This can be paid via paypal, venmo, square, google wallet, wechat, and/or alipay to me.  If you need another payment arrangement, let me know and we'll figure something out.
+4. Along with submitting your picks, you also need to submit a $10 (USD) entry fee.  This can be paid via paypal, venmo, squarecash, google wallet, wechat, or alipay to me.  If you need another payment arrangement, let me know and we'll figure something out.
 5. Prizes: 1st place (~70% of pot), 2nd place (~20% of pot), 3rd place (~10% of pot), and last place (half entry fee returned)
 6. Other questions? Just email me.
 ## Previous Winners
@@ -35,4 +35,5 @@ The 18th season of our Bach Bracket starts Monday Jan 1, 2018. Submit your picks
 * Season 15 (JoJo) - Julie
 * Season 16 (Nick) - Melissa
 * Season 17 (Rachel) - Shiran
-* Season 18 (Arie) - TBD
+* Season 18 (Arie) - Amanda
+* Season 19 (Becca) - TBD
