@@ -1,0 +1,217 @@
+---
+layout: single
+author_profile: false
+author: mark
+title: "Merry Christmas Tom & KD!"
+permalink: /xmastkd
+---
+
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<!-- <meta name='viewport' content='initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' /> -->
+<meta name="viewport" content="user-scalable=0">
+<meta name="viewport" content="width=device-width">
+
+<style type="text/css">
+    #canvas {
+      background:url(assets/images/xmastkd-open.png) no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      -webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+      filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+  }
+  @media only screen and (max-width : 780px){
+    .masthead__inner-wrap{
+      display: none;
+    }
+    .page__footer{
+      display: none;
+    }
+  }
+  
+
+</style>
+<div id="canvas"></div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+
+<script type="text/javascript">
+
+
+// Creates a new canvas element and appends it as a child
+// to the parent element, and returns the reference to
+// the newly created canvas element
+
+
+function createCanvas(parent, width, height) {
+    var canvas = {};
+    canvas.node = document.createElement('canvas');
+    canvas.node.id = "wrapping-paper";
+    canvas.context = canvas.node.getContext('2d');
+    canvas.node.width = width || 100;
+    canvas.node.height = height || 100;
+    parent.appendChild(canvas.node);
+    return canvas;
+}
+
+// Get the position of a touch relative to the canvas
+function getTouchPos(canvasDom, touchEvent) {
+  var rect = canvasDom.getBoundingClientRect();
+  return {
+    x: touchEvent.touches[0].clientX - rect.left,
+    y: touchEvent.touches[0].clientY - rect.top
+  };
+}
+
+function init(container, width, height, fillColor) {
+    var canvas = createCanvas(container, width, height);
+    var ctx = canvas.context;
+    // define a custom fillCircle method
+    ctx.fillCircle = function(x, y, radius, fillColor) {
+        this.fillStyle = fillColor;
+        this.beginPath();
+        this.moveTo(x, y);
+        this.arc(x, y, radius, 0, Math.PI * 2, false);
+        this.fill();
+    };
+    ctx.clearTo = function(fillColor) {
+        var img = new Image();
+        img.src = "assets/images/giftwrap.png";
+        img.onload = function () {
+            var pattern = ctx.createPattern(img, "repeat");
+            ctx.fillStyle = pattern;
+            ctx.fillRect(0, 0, width, height);
+        };
+    };
+    ctx.clearTo(fillColor || "#ddd");
+
+    // bind mouse events
+    canvas.node.onmousemove = function(e) {
+        if (!canvas.isDrawing) {
+           return;
+        }
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        var radius = 30; // or whatever
+        var fillColor = '#ff0000';
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillCircle(x, y, radius, fillColor);
+    };
+
+    canvas.node.onmousedown = function(e) {
+        canvas.isDrawing = true;
+    };
+    canvas.node.onmouseup = function(e) {
+        canvas.isDrawing = false;
+    };
+    // bind touch events to the mouse events
+    // canvas.node.touchmove = function(e) {
+    //     e.preventDefault();
+    //     var touch = e.touches[0];
+    //     var mouseEvent = new MouseEvent("mousemove", {
+    //       clientX: touch.clientX,
+    //       clientY: touch.clientY
+    //     });
+    //     canvas.dispatchEvent(mouseEvent);
+    // };
+    // canvas.node.touchstart = function(e) {
+    //     e.preventDefault();
+    //     mousePos = getTouchPos(canvas, e);
+    //     var touch = e.touches[0];
+    //     var mouseEvent = new MouseEvent("mousedown", {
+    //       clientX: touch.clientX,
+    //       clientY: touch.clientY
+    //     });
+    //     canvas.dispatchEvent(mouseEvent);
+    // };
+    // canvas.node.touchend = function(e) {
+    //     e.preventDefault();
+    //     var mouseEvent = new MouseEvent("mouseup", {});
+    //     canvas.dispatchEvent(mouseEvent);
+    // };
+
+}
+
+var container = document.getElementById('canvas');
+var windowWidth = document.documentElement.clientWidth
+var desiredWidth = 533
+var desiredHeight = 800
+var padding = 40
+
+if(windowWidth - 2 * padding < 533){
+  desiredWidth = windowWidth - 2 * padding
+  desiredHeight = (windowWidth - 2 * padding) / 533 * 800
+}
+
+container.style.height = desiredHeight+"px";
+container.style.width = desiredWidth+"px";
+init(container, desiredWidth, desiredHeight , '#ddd');
+
+var canvas = document.getElementById('wrapping-paper')
+
+
+
+
+
+
+// Set up touch events for mobile, etc
+canvas.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  mousePos = getTouchPos(canvas, e);
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousedown", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+canvas.addEventListener("touchend", function (e) {
+  e.preventDefault();
+  var mouseEvent = new MouseEvent("mouseup", {});
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+canvas.addEventListener("touchmove", function (e) {
+  e.preventDefault();
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousemove", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+
+// $(document).ready(function () {
+//     var isTouchDevice = 'ontouchstart' in document.documentElement;
+//     $('#wrapping-paper').on('touchmove', function(){
+//         // if (isTouchDevice)  {   
+//             e.preventDefault();
+//             var touch = e.touches[0];
+//             var mouseEvent = new MouseEvent("mousemove", {
+//               clientX: touch.clientX,
+//               clientY: touch.clientY
+//             });
+//             canvas.dispatchEvent(mouseEvent);  
+//         // }
+//     });
+//     $('#wrapping-paper').on('touchstart', function(){
+//         // if (isTouchDevice)  {   
+//             e.preventDefault();
+//             mousePos = getTouchPos(canvas, e);
+//             var touch = e.touches[0];
+//             var mouseEvent = new MouseEvent("mousedown", {
+//               clientX: touch.clientX,
+//               clientY: touch.clientY
+//             });
+//             canvas.dispatchEvent(mouseEvent);  
+//         // }
+//     });
+//     $('#wrapping-paper').on('touchend', function(){
+//         // if (isTouchDevice)  {   
+//             var mouseEvent = new MouseEvent("mouseup", {});
+//             canvas.dispatchEvent(mouseEvent);
+//         // }
+//     });
+// });
+</script>
