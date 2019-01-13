@@ -5,6 +5,8 @@ jQuery( document ).ready(function( $ ) {
 	$('#result').hide();
 	// bind to the submit event of our form
 	$("#bracket-form").submit(function(event){
+		// prevent default posting of form
+		event.preventDefault();
 		// abort any pending request
 		if (request) {
 			request.abort();
@@ -64,8 +66,6 @@ jQuery( document ).ready(function( $ ) {
 			// reenable the inputs
 			$inputs.prop("disabled", false);
 		});
-		// prevent default posting of form
-		event.preventDefault();
 	});
 });
 </script>
