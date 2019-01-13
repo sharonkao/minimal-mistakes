@@ -25,7 +25,7 @@ jQuery( document ).ready(function( $ ) {
 
 		$('#result').text('Sending data...');
 		$('#result').show();
-		var sendData = "{\"fields\":{" + jsonData + "}}"
+		var sendData = "{\"fields\":{" + JSON.stringify(jsonData) + "}}"
 		console.warn(sendData)
 		// fire off the request to /form.php
 		request = $.ajax({
