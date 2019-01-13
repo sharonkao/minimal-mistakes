@@ -14,7 +14,7 @@ jQuery( document ).ready(function( $ ) {
 		// let's select and cache all the fields
 		var $inputs = $form.find("input, select, button, textarea");
 		// serialize the data in the form
-		var serializedData = $form.serialize();
+		var serializedData = $form.serializeObject();
 		// let's disable the inputs for the duration of the ajax request
 		// Note: we disable elements AFTER the form data has been serialized.
 		// Disabled form elements will not be serialized.
@@ -22,7 +22,7 @@ jQuery( document ).ready(function( $ ) {
 
 		$('#result').text('Sending data...');
 		$('#result').show();
-		var sendData = "{\"fields\":" + serializedData + "}"
+		var sendData = "{\"fields\":" + JSON.stringify(serializedData) + "}"
 		console.warn(sendData)
 		// fire off the request to /form.php
 		request = $.ajax({
