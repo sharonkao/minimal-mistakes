@@ -22,7 +22,7 @@ jQuery( document ).ready(function( $ ) {
 
 		$('#result').text('Sending data...');
 		$('#result').show();
-		var sendData = "{\"fields\":{" + serializedData + "}}"
+		var sendData = "{\"fields\":{" + $form + "}}"
 		console.warn(sendData)
 		// fire off the request to /form.php
 		request = $.ajax({
