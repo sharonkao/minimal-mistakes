@@ -7,7 +7,7 @@ permalink: /bachelor-bracket/
 ---
 
 ## Upcoming BachBracket Season: Colton Underwood
-The 20th season of our Bach Bracket starts Monday January 7, 2019. Submit your picks (by clicking on the link below) to join in on the fun!
+The 21th season of our Bach Bracket starts Monday May 13, 2019. Submit your picks (by clicking on the link below) to join in on the fun!
 <br>
 <a class="btn-primary" href="{{ site.baseurl }}{% link bachelor-submit.html %}">FILL OUT YOUR BRACKET HERE</a>
 ## Rules / Legal Fine Print
@@ -37,4 +37,5 @@ The 20th season of our Bach Bracket starts Monday January 7, 2019. Submit your p
 * Season 17 (Rachel) - Shiran
 * Season 18 (Arie) - Amanda
 * Season 19 (Becca) - Hadas
-* Season 20 (Colton) - TBD
+* Season 20 (Colton) - Shiran
+* Season 21 (Hannah B.) - TBD
